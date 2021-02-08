@@ -67,7 +67,7 @@ class RedisNamespaceManager(NamespaceManager):
         return key in self
 
     def set_value(self, key, value, expiretime=None):
-        value = pickle.dumps(value)
+        value = pickle.dumps(value, protocol=2)
         if expiretime is not None:
             self.client.setex(self._format_key(key), int(expiretime), value)
         else:
@@ -138,4 +138,3 @@ class RedisSynchronizer(SynchronizerImpl):
             if not wait:
                 return False
             time.sleep(0.2)
-

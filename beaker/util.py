@@ -313,7 +313,7 @@ def coerce_session_params(params):
          "Session save_accessed_time must be a boolean (defaults to true)."),
         ('auto', (bool, NoneType), "Session is created if accessed."),
         ('webtest_varname', (str, NoneType), "Session varname must be a string."),
-        ('data_serializer', (str,), "data_serializer must be a string.")
+        ('data_serializer', (str, object), "data_serializer must be a string or an object.")
     ]
     opts = verify_rules(params, rules)
     cookie_expires = opts.get('cookie_expires')
